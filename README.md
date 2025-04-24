@@ -181,7 +181,12 @@ Please first donwload the pre-trained CAT-Seg weight `model_final_base.pth` from
 
 Make sure to place the downloaded weights in the `pretrain_weights` folder.
 
-
+```bash
+mkdir pretrain_weights && cd pretrain_weights
+# CAT-Seg
+wget https://huggingface.co/hamacojr/CAT-Seg/resolve/main/model_final_base.pth
+cd ..
+```
 
 <br/>
 

@@ -45,7 +45,7 @@ from baselines.data import (
 from baselines.evaluation import (
     CATSegEvaluator,
     PartCATSegEvaluator,
-    ObjCATSegEvaluator
+    # ObjCATSegEvaluator
 )
 from baselines.utils.post_process_utils import dense_crf_post_process
 from baselines.utils.misc import random_seed
@@ -54,8 +54,8 @@ from baselines.utils.misc import random_seed
 evaluator_classes = {
     "CATSeg": CATSegEvaluator,
     "PartCATSeg": PartCATSegEvaluator,
-    "ObjCATSeg": ObjCATSegEvaluator,
-    "ObjPartCATSeg": ObjCATSegEvaluator,
+    # "ObjCATSeg": ObjCATSegEvaluator,
+    # "ObjPartCATSeg": ObjCATSegEvaluator,
 }
 
 

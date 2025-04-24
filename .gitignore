@@ -1,11 +1,10 @@
 
 
 temp/
-
 temp_*
-
 */temp/*
 
+NOTE.md
 
 # VS Code
 .vscode/
@@ -55,17 +54,24 @@ partcatseg_exp.py
 
 # baselines
 baselines/*
+!baselines/data/
 !baselines/data/*
+!baselines/evaluation/
 !baselines/evaluation/*
+!baselines/modeling/
 !baselines/modeling/*
+!baselines/third_party/
 !baselines/third_party/*
+!baselines/utils/
 !baselines/utils/*
 !baselines/__init__.py
 !baselines/catseg.py
 !baselines/config.py
 !baselines/partcatseg.py
 !baselines/test_time_augmentation.py
-
+# !baselines/objcatseg.py
+# !baselines/objpartcatseg.py
+# !baselines/evaluation/objcatseg_evaluation.py
 
 .DS_Store
 
