@@ -29,6 +29,9 @@ weights/*
 pretrain_weights
 pretrain_weights/*
 
+weights2
+weights2/*
+
 # configs
 configs/*
 !configs/base_catseg_config.yaml

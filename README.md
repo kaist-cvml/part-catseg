@@ -105,8 +105,8 @@ cd datasets
 ```sh
 gdown https://drive.google.com/uc?id=1QF0BglrcC0teKqx15vP8qJNakGgCWaEH
 tar -xzf PascalPart116.tar.gz
-find datasets/PascalPart116/images/val/ -name '._*' -delete
-find datasets/PascalPart116/ -name '._*' -delete
+find ./PascalPart116/images/val/ -name '._*' -delete
+find ./PascalPart116/ -name '._*' -delete
 ```
 
 
@@ -170,7 +170,7 @@ Please first donwload the pre-trained CAT-Seg weight `model_final_base.pth` from
 <th valign="bottom">Checkpoint</th>
 <tr>
 <!-- TABLE BODY -->
-<td align="center">CAT-Seg</td> 
+<td align="center">CAT-Seg</td>
 
 <td align="center"><a href="https://huggingface.co/hamacojr/CAT-Seg/blob/main/model_final_base.pth">download link</a>&nbsp;</td>
 
@@ -205,29 +205,28 @@ For the evaluation, we provide the pre-trained weights for the PartCATSeg model 
     <td align="center">PartCATSeg</td>
     <td align="center">zero-shot</td>
     <td align="center">Pascal-Part-116</td>
-    <!-- <td align="center"><a href="https://drive.google.com/file/d/1Qf9oLofq8ENBzDaSznP7EBODKkE_Ph2A/view?usp=drive_link">model</a>&nbsp;</td> -->
-    <td align="center"><a href="https://drive.google.com/file/d/1ytZpfutk__67GLwB-4jMClehJlnAzYFS/view?usp=share_link">model</a>&nbsp;</td>
+    <td align="center"><a href="https://drive.google.com/uc?id=1WhbMVGKm7KkHacz9rY5vU7oVILzvI_OK">model</a>&nbsp;</td>
 </tr>
 <tr>
     <td align="center">PartCATSeg</td>
     <td align="center">zero-shot</td>
     <td align="center">ADE20K-Part-234</td>
-    <!-- <td align="center"><a href="https://drive.google.com/file/d/1XqgHI4CRcfLIz2j8_ZbIvoF_GFjMqCqn/view?usp=drive_link">model</a>&nbsp;</td> -->
-    <td align="center"><a href="https://drive.google.com/file/d/10UTxrlamYq2rq3Uuv1GdOxpLy8f-QXoz/view?usp=share_link">model</a>&nbsp;</td>
+    <td align="center"><i>TBA</i>&nbsp;</td>
+    <!-- <td align="center"><a href="">model</a>&nbsp;</td> -->
 </tr>
 <tr>
     <td align="center">PartCATSeg</td>
     <td align="center">zero-shot</td>
     <td align="center">PartImageNet (Seg)</td>
-    <!-- <td align="center"><a href="https://drive.google.com/file/d/1XqgHI4CRcfLIz2j8_ZbIvoF_GFjMqCqn/view?usp=drive_link">model</a>&nbsp;</td> -->
-    <td align="center"><a href="https://drive.google.com/file/d/10UTxrlamYq2rq3Uuv1GdOxpLy8f-QXoz/view?usp=share_link">model</a>&nbsp;</td>
+    <td align="center"><i>TBA</i>&nbsp;</td>
+    <!-- <td align="center"><a href="https://drive.google.com/file/d/10UTxrlamYq2rq3Uuv1GdOxpLy8f-QXoz/view?usp=share_link">model</a>&nbsp;</td> -->
 </tr>
 <tr>
     <td align="center">PartCATSeg</td>
     <td align="center">zero-shot</td>
     <td align="center">PartImageNet (OOD)</td>
+    <td align="center"><i>TBA</i>&nbsp;</td>
     <!-- <td align="center"><a href="https://drive.google.com/file/d/1XqgHI4CRcfLIz2j8_ZbIvoF_GFjMqCqn/view?usp=drive_link">model</a>&nbsp;</td> -->
-    <td align="center"><b><i>TBA</i></b>&nbsp;</td>
 </tr>
 
 </tbody></table>
@@ -236,16 +235,16 @@ For the evaluation, we provide the pre-trained weights for the PartCATSeg model 
 mkdir weights && cd weights
 
 # Pascal-Part-116
-# PartCATSeg (partcatseg_voc.pth (927.9M))
+# PartCATSeg (partcatseg_voc.pth (928M on Ubuntu / 885M on Google Drive))
 gdown https://drive.google.com/uc?id=1WhbMVGKm7KkHacz9rY5vU7oVILzvI_OK
 
 # ADE20K-Part-234
-# PartCATSeg (partcatseg_ade.pth (927.9M))
-gdown https://drive.google.com/uc?id=12JgECVJco81EoI_3ZR93S2z7zdvwAyU9
+# PartCATSeg (partcatseg_ade.pth (928M on Ubuntu / 885M on Google Drive))
+# TBA
 
 # PartImageNet (Seg)
-# PartCATSeg (partcatseg_partimagenet.pth (927.9M))
-gdown https://drive.google.com/uc?id=1Jp8IjrTlQKGUOaSU8REvB4wvHmyNb2yV
+# PartCATSeg (partcatseg_partimagenet.pth)
+# TBA
 ```
 
 <br/>
@@ -346,3 +345,22 @@ We would like to express our gratitude to the open-source projects and their con
 <!-- [ViT](https://github.com/google-research/vision_transformer)
 [Swin](https://github.com/microsoft/Swin-Transformer) -->
 
+
+
+
+
+
+<!-- ### Issues
+
+##### `torch.nn.parallel.DistributedDataParallel`
+
+```
+# vim ~/miniconda3/envs/partcatseg/lib/python3.8/site-packages/detectron2/engine/defaults.py
+# Line 74
+(AS IS) `ddp = DistributedDataParallel(model, **kwargs)`
+(TOBE) `ddp = DistributedDataParallel(model, **kwargs, find_unused_parameters=True)`
+```
+
+> RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by making sure all `forward` function outputs participate in calculating loss.
+
+-->
