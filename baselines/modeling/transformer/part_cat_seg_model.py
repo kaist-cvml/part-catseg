@@ -795,21 +795,23 @@ class Aggregator(nn.Module):
             projected_text_guidance = self.text_guidance_projection(text_part_obj_feats)
 
         for i, (layer, layer_object) in enumerate(zip(self.layers, self.layers_object)):
-            # if i == len(self.layers) - 1:
-            #     part_corr_embed = layer(corr_embed, projected_guidance, projected_text_guidance)[:, :, :num_part_classes]
-            #     # part_corr_embed = layer(corr_embed, text_guidance=projected_text_guidance)[:, :, :num_part_classes]
-            # else:
-            #     part_corr_embed = layer(corr_embed[:, :, :num_part_classes], projected_guidance, projected_text_guidance[:, :num_part_classes])
-            #     # part_corr_embed = layer(corr_embed[:, :, :num_part_classes], text_guidance=projected_text_guidance[:, :num_part_classes])
-            # obj_corr_embed = layer_object(corr_embed[:, :, num_part_classes:], projected_guidance, projected_text_guidance[:, num_part_classes:])
-            # # obj_corr_embed = layer_object(corr_embed[:, :, num_part_classes:], text_guidance=projected_text_guidance[:, num_part_classes:])
-            #     # TODO: object freeze or duplicate
-            #     #
-            #     # obj_corr_embed = layer(corr_embed[:, :, num_part_classes:], projected_guidance, projected_text_guidance[:, num_part_classes:])
+            """
+            # # 2) Split-pass (separate branches)
+            if i == len(self.layers) - 1:
+                part_corr_embed = layer(corr_embed, projected_guidance, projected_text_guidance)[:, :, :num_part_classes]
+                # part_corr_embed = layer(corr_embed, text_guidance=projected_text_guidance)[:, :, :num_part_classes]
+            else:
+                part_corr_embed = layer(corr_embed[:, :, :num_part_classes], projected_guidance, projected_text_guidance[:, :num_part_classes])
+                # part_corr_embed = layer(corr_embed[:, :, :num_part_classes], text_guidance=projected_text_guidance[:, :num_part_classes])
+            obj_corr_embed = layer_object(corr_embed[:, :, num_part_classes:], projected_guidance, projected_text_guidance[:, num_part_classes:])
+            # obj_corr_embed = layer_object(corr_embed[:, :, num_part_classes:], text_guidance=projected_text_guidance[:, num_part_classes:])
+                # TODO: object freeze or duplicate
+                #
+                # obj_corr_embed = layer(corr_embed[:, :, num_part_classes:], projected_guidance, projected_text_guidance[:, num_part_classes:])
 
-            #     # corr_embed = torch.cat([part_corr_embed, obj_corr_embed], dim=2)
-
-            # One-pass (entangled branch with weight sharing)
+                # corr_embed = torch.cat([part_corr_embed, obj_corr_embed], dim=2)
+            """
+            # 1) One-pass (entangled branch with weight sharing)
             agg_output = layer(corr_embed, projected_guidance, projected_text_guidance)
             part_corr_embed, obj_corr_embed = agg_output[:, :, :num_part_classes], agg_output[:, :, num_part_classes:]
 

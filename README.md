@@ -172,7 +172,7 @@ Please first donwload the pre-trained CAT-Seg weight `model_final_base.pth` from
 <!-- TABLE BODY -->
 <td align="center">CAT-Seg</td>
 
-<td align="center"><a href="https://huggingface.co/hamacojr/CAT-Seg/blob/main/model_final_base.pth">download link</a>&nbsp;</td>
+<td align="center"><a href="https://huggingface.co/hamacojr/CAT-Seg/blob/main/model_final_base.pth">download link</a></td>
 
 </tr>
 </tbody></table>
@@ -205,29 +205,29 @@ For the evaluation, we provide the pre-trained weights for the PartCATSeg model 
     <td align="center">PartCATSeg</td>
     <td align="center">zero-shot</td>
     <td align="center">Pascal-Part-116</td>
-    <td align="center"><a href="https://drive.google.com/uc?id=1WhbMVGKm7KkHacz9rY5vU7oVILzvI_OK">model</a>&nbsp;</td>
+    <td align="center"><a href="https://drive.google.com/file/d/1JUJjJQLMKE96H5SLNs4EMm4jiU6fPgRb/view?usp=share_link">model</a></td>
 </tr>
 <tr>
     <td align="center">PartCATSeg</td>
     <td align="center">zero-shot</td>
     <td align="center">ADE20K-Part-234</td>
-    <td align="center"><i>TBA</i>&nbsp;</td>
-    <!-- <td align="center"><a href="">model</a>&nbsp;</td> -->
+    <!-- <td align="center"><i>TBA</i></td> -->
+    <td align="center"><a href="https://drive.google.com/file/d/1MKQEk71o9Xvs4aBY_GLyGa1lWTaW10fv/view?usp=share_link">model</a></td>
 </tr>
 <tr>
     <td align="center">PartCATSeg</td>
     <td align="center">zero-shot</td>
     <td align="center">PartImageNet (Seg)</td>
-    <td align="center"><i>TBA</i>&nbsp;</td>
-    <!-- <td align="center"><a href="https://drive.google.com/file/d/10UTxrlamYq2rq3Uuv1GdOxpLy8f-QXoz/view?usp=share_link">model</a>&nbsp;</td> -->
+    <td align="center"><i>TBA</i></td>
+    <!-- <td align="center"><a href="https://drive.google.com/file/d/1zvV6achGzDS_tAwulaSkFYblMTghMHO6/view?usp=share_link">model</a></td> -->
 </tr>
-<tr>
+<!-- <tr>
     <td align="center">PartCATSeg</td>
     <td align="center">zero-shot</td>
     <td align="center">PartImageNet (OOD)</td>
-    <td align="center"><i>TBA</i>&nbsp;</td>
-    <!-- <td align="center"><a href="https://drive.google.com/file/d/1XqgHI4CRcfLIz2j8_ZbIvoF_GFjMqCqn/view?usp=drive_link">model</a>&nbsp;</td> -->
-</tr>
+    <td align="center"><i>TBA</i></td>
+    <td align="center"><a href="https://drive.google.com/file/d/1XqgHI4CRcfLIz2j8_ZbIvoF_GFjMqCqn/view?usp=drive_link">model</a></td>
+</tr> -->
 
 </tbody></table>
 
@@ -236,14 +236,14 @@ mkdir weights && cd weights
 
 # Pascal-Part-116
 # PartCATSeg (partcatseg_voc.pth (928M on Ubuntu / 885M on Google Drive))
-gdown https://drive.google.com/uc?id=1WhbMVGKm7KkHacz9rY5vU7oVILzvI_OK
+gdown https://drive.google.com/uc?id=1JUJjJQLMKE96H5SLNs4EMm4jiU6fPgRb
 
 # ADE20K-Part-234
 # PartCATSeg (partcatseg_ade.pth (928M on Ubuntu / 885M on Google Drive))
-# TBA
+gdown https://drive.google.com/uc?id=1MKQEk71o9Xvs4aBY_GLyGa1lWTaW10fv
 
 # PartImageNet (Seg)
-# PartCATSeg (partcatseg_partimagenet.pth)
+# PartCATSeg (partcatseg_partimagenet_seg.pth)
 # TBA
 ```
 
