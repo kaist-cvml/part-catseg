@@ -120,11 +120,13 @@ tar -xzf ADE20KPart234.tar.gz
 #### PartImageNet (Seg)
 
 * Download the `LOC_synset_mapping.txt` file from [this link](https://www.kaggle.com/c/imagenet-object-localization-challenge/data) and place it in the `datasets` folder.
-* Download `PartImageNet_Seg` from [PartImageNet](https://github.com/TACJu/PartImageNet) and extract it into the `datasets` folder.
+* Download `PartImageNet_Seg` from [PartImageNet](https://github.com/TACJu/PartImageNet) and extract it into the `datasets` folder as `PartImageNet`.
+
 
 #### PartImageNet (OOD)
 
-* **<i>TBA</i>**
+* Download `PartImageNet_OOD` from [PartImageNet](https://github.com/TACJu/PartImageNet) and place it into the `datasets` folder as `PartImageNet_OOD`.
+
 
 <br/>
 
@@ -133,7 +135,7 @@ tar -xzf ADE20KPart234.tar.gz
 - PascalPart116
 - ADE20KPart234
 - PartImageNet (Seg)
-- PartImageNet (OOD) - **<i>TBA</i>**
+- PartImageNet (OOD)
 
 ```sh
 # PascalPart116
@@ -154,7 +156,13 @@ python partimagenet_preprocess.py --data_dir PartImageNet
 # Make sure to have LOC_synset_mapping.txt in the datasets folder mentioned above.
 
 # PartImageNet (OOD)
-# TBA
+# train split
+find PartImageNet_OOD/images/train/* -type f -exec mv {} PartImageNet_OOD/images/train/ \;
+find PartImageNet_OOD/images/train/* -type d -empty -delete
+
+# val split
+find PartImageNet_OOD/images/val/* -type f -exec mv {} PartImageNet_OOD/images/val/ \;
+find PartImageNet_OOD/images/val/* -type d -empty -delete
 ```
 
 <br/>
@@ -270,6 +278,9 @@ python train_net.py \
     --eval-only MODEL.WEIGHTS ./weights/partcatseg_voc.pth
 ```
 
+Please note that the performance on `PartImageNet_OOD` should be evaluated by the metric <u>'mIoU-unbase</u>' since the validation set of `PartImageNet_OOD` does not contain the base classes.
+
+
 <br/>
 
 ### Project Structure
@@ -300,7 +311,13 @@ baselines/modeling/transformer/part_cat_seg_predictor.py
 │   │   ├── annotations_detectron2_obj
 │   │   └── annotations_detectron2_part
 │   ├── ADE20KPart234/
-│   └── PartImageNet/
+│   ├── PartImageNet/
+│   └── PartImageNet_OOD/
+│       ├── images
+│       │   ├── annotations_detectron2_part
+│       │   └── annotations_detectron2_part
+│       ├── train.json
+│       └── val.json
 ├── weights/
 │   ├── partcatseg_voc.pth
 │   └── partcatseg_ade.pth
@@ -309,6 +326,7 @@ baselines/modeling/transformer/part_cat_seg_predictor.py
 │   │   ├── partcatseg_voc.yaml
 │   │   ├── partcatseg_ade.yaml
 │   │   ├── partcatseg_partimagenet.yaml
+│   │   ├── partcatseg_partimagenet_ood.yaml
 │   │   └── ...
 ├── baselines/
 │   ├── evaluation/

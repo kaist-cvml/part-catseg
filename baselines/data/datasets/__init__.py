@@ -3,3 +3,4 @@ from .register_pascal_part_116 import register_pascal_part_116
 from .register_ade_part_234 import register_ade20k_part_234
 # from .register_partimagenet import register_all_partimagenet
 from .register_partimagenet import register_partimagenet
+from .register_partimagenet_ood import register_partimagenet_ood

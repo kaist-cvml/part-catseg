@@ -43,9 +43,11 @@ configs/zero_shot/*
 !configs/zero_shot/catseg_voc.yaml
 !configs/zero_shot/catseg_ade.yaml
 !configs/zero_shot/catseg_partimagenet.yaml
+!configs/zero_shot/catseg_partimagenet_ood.yaml
 !configs/zero_shot/partcatseg_voc.yaml
 !configs/zero_shot/partcatseg_ade.yaml
 !configs/zero_shot/partcatseg_partimagenet.yaml
+!configs/zero_shot/partcatseg_partimagenet_ood.yaml
 
 # debug
 debug/

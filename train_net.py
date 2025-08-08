@@ -37,6 +37,7 @@ from baselines import add_mask_former_config, SemanticSegmentorWithTTA
 from baselines.data import (
     SemanticObjPartDatasetMapper,
     PartImagenetDatasetMapper,
+    PartImagenetOODDatasetMapper,
 )
 from baselines.data import (
     build_detection_test_loader,
@@ -108,6 +109,8 @@ class Trainer(DefaultTrainer):
             mapper = SemanticObjPartDatasetMapper(cfg, True)
         elif cfg.INPUT.DATASET_MAPPER_NAME == "partimagenet":
             mapper = PartImagenetDatasetMapper(cfg, True)
+        elif cfg.INPUT.DATASET_MAPPER_NAME == "partimagenet_ood":
+            mapper = PartImagenetOODDatasetMapper(cfg, True)
         else:
             raise NotImplementedError
         return build_detection_train_loader(cfg, mapper=mapper, dataset=dataset)
@@ -125,6 +128,8 @@ class Trainer(DefaultTrainer):
             mapper = SemanticObjPartDatasetMapper(cfg, False)
         elif cfg.INPUT.DATASET_MAPPER_NAME == "partimagenet":
             mapper = PartImagenetDatasetMapper(cfg, False)
+        elif cfg.INPUT.DATASET_MAPPER_NAME == "partimagenet_ood":
+            mapper = PartImagenetOODDatasetMapper(cfg, False)
         else:
             raise NotImplementedError
 
