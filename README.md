@@ -226,8 +226,8 @@ For the evaluation, we provide the pre-trained weights for the PartCATSeg model 
     <td align="center">PartCATSeg</td>
     <td align="center">zero-shot</td>
     <td align="center">PartImageNet (Seg)</td>
-    <td align="center"><i>TBA</i></td>
-    <!-- <td align="center"><a href="https://drive.google.com/file/d/1zvV6achGzDS_tAwulaSkFYblMTghMHO6/view?usp=share_link">model</a></td> -->
+    <td align="center"><a href="https://drive.google.com/file/d/1zvV6achGzDS_tAwulaSkFYblMTghMHO6/view?usp=share_link">model</a></td>
+    <!-- <td align="center"><i>TBA</i></td> -->
 </tr>
 <!-- <tr>
     <td align="center">PartCATSeg</td>
@@ -252,7 +252,7 @@ gdown https://drive.google.com/uc?id=1MKQEk71o9Xvs4aBY_GLyGa1lWTaW10fv
 
 # PartImageNet (Seg)
 # PartCATSeg (partcatseg_partimagenet_seg.pth)
-# TBA
+gdown https://drive.google.com/uc\?id\=1zvV6achGzDS_tAwulaSkFYblMTghMHO6
 ```
 
 <br/>
