@@ -321,6 +321,13 @@ def build_detection_test_loader(
         # or, instantiate with a CfgNode:
         data_loader = build_detection_test_loader(cfg, "my_test")
     """
+    # The models' inference paths return a prediction for the first image of a
+    # batch only, so the evaluator would silently skip the other images.
+    if samples_per_gpu != 1:
+        raise ValueError(
+            f"SOLVER.TEST_IMS_PER_BATCH (samples_per_gpu) must be 1, got {samples_per_gpu}: "
+            "inference returns a prediction for the first image of each batch only."
+        )
     if isinstance(dataset, list):
         dataset = DatasetFromList(dataset, copy=False)
     if mapper is not None:
